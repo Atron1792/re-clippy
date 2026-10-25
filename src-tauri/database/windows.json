@@ -1,0 +1,102 @@
+[
+  {
+    "prompts": ["create a new file", "make a new file", "how do i make a file", "new file"],
+    "responses": ["Open File Explorer, go to the folder you want, right-click an empty area, choose New, then choose the file type. In many apps, Ctrl + N makes a new document too.", "In File Explorer, open the destination, right-click empty space, then choose New and your file type. Congratulations: you have manufactured a file."]
+  },
+  {
+    "prompts": ["create folder", "make a folder", "new folder", "how do i make a folder"],
+    "responses": ["In File Explorer, press Ctrl + Shift + N, or right-click empty space and choose New > Folder.", "Open the location in File Explorer, right-click empty space, then choose New > Folder. Tiny digital rooms, coming right up."]
+  },
+  {
+    "prompts": ["rename a file", "change file name", "rename folder"],
+    "responses": ["Select the file or folder, press F2, type the new name, and press Enter. A fresh identity for your data.", "Right-click the item and choose Rename, or select it and press F2."]
+  },
+  {
+    "prompts": ["delete a file", "remove a file", "delete folder"],
+    "responses": ["Select it and press Delete to send it to the Recycle Bin. Use Shift + Delete only if you are extremely sure.", "Right-click the item and choose Delete. It goes to the Recycle Bin first, so this is a breakup with a grace period."]
+  },
+  {
+    "prompts": ["restore deleted file", "recover deleted file", "recycle bin"],
+    "responses": ["Open the Recycle Bin, right-click the file, then choose Restore. Your file gets a dramatic comeback.", "Open Recycle Bin, select the item, and choose Restore. I love a redemption arc."]
+  },
+  {
+    "prompts": ["copy a file", "duplicate a file", "copy folder"],
+    "responses": ["Select it, press Ctrl + C, open the destination, then press Ctrl + V.", "Use Ctrl + C to copy and Ctrl + V to paste. The original stays put, like a responsible sibling."]
+  },
+  {
+    "prompts": ["move a file", "move folder", "transfer a file"],
+    "responses": ["Select it, press Ctrl + X, open the destination folder, then press Ctrl + V.", "Cut with Ctrl + X and paste with Ctrl + V. Your file is ready for an exciting relocation."]
+  },
+  {
+    "prompts": ["zip a folder", "compress files", "make a zip file"],
+    "responses": ["Right-click the file or folder, choose Send to, then Compressed (zipped) folder.", "Right-click the item and choose Send to > Compressed (zipped) folder. Windows will make it smaller, but not emotionally."]
+  },
+  {
+    "prompts": ["unzip a file", "extract zip", "open zip file"],
+    "responses": ["Right-click the ZIP file and choose Extract All. Pick a destination and let the tiny digital boxes escape.", "Open the ZIP file and select Extract All, then choose where its contents should live."]
+  },
+  {
+    "prompts": ["where are my screenshots", "find screenshots", "screenshot folder", "where do screenshots go"],
+    "responses": ["Open File Explorer and select Pictures > Screenshots. Windows + Print Screen saves full-screen screenshots there.", "Check Pictures > Screenshots in File Explorer. If you used Snipping Tool, its save location may be the last place you chose."]
+  },
+  {
+    "prompts": ["take screenshot", "screenshot", "capture my screen", "snipping tool"],
+    "responses": ["Press Windows + Shift + S, choose a snip type, then drag over what you want to capture.", "Press Windows + Shift + S for Snipping Tool. For a full screen image saved automatically, use Windows + Print Screen."]
+  },
+  {
+    "prompts": ["screen record", "record my screen", "record gameplay"],
+    "responses": ["Press Windows + G to open Game Bar, then use the Capture widget to record an app. Windows can be fussy about recording the desktop itself.", "Open Xbox Game Bar with Windows + G and use Capture to start a recording."]
+  },
+  {
+    "prompts": ["change wallpaper", "change background", "desktop background"],
+    "responses": ["Right-click the desktop and choose Personalize, then Background. Pick a picture, solid color, or slideshow.", "Open Settings > Personalization > Background and choose your preferred digital habitat."]
+  },
+  {
+    "prompts": ["dark mode", "turn on dark mode", "windows dark theme"],
+    "responses": ["Open Settings > Personalization > Colors, then choose Dark under Choose your mode. Welcome to the cozy side.", "Go to Settings > Personalization > Colors and select Dark mode."]
+  },
+  {
+    "prompts": ["pin app to taskbar", "add app to taskbar", "taskbar shortcut"],
+    "responses": ["Open the app, right-click its taskbar icon, then choose Pin to taskbar.", "Find the app in Start, right-click it, choose More, then Pin to taskbar. Permanent shelf space achieved."]
+  },
+  {
+    "prompts": ["uninstall app", "remove program", "delete an application"],
+    "responses": ["Open Settings > Apps > Installed apps, find the app, select the three dots, then choose Uninstall.", "Go to Settings > Apps > Installed apps and uninstall it from the three-dot menu. Verify the name first; I am not a backup service."]
+  },
+  {
+    "prompts": ["update windows", "windows update", "check for updates"],
+    "responses": ["Open Settings > Windows Update, then choose Check for updates. Windows may request a restart at the least poetic moment.", "Go to Settings > Windows Update and select Check for updates."]
+  },
+  {
+    "prompts": ["connect bluetooth", "pair bluetooth", "add bluetooth device"],
+    "responses": ["Open Settings > Bluetooth & devices, turn Bluetooth on, then choose Add device. Put the accessory in pairing mode first.", "Go to Settings > Bluetooth & devices > Add device and select Bluetooth."]
+  },
+  {
+    "prompts": ["connect wifi", "join wifi", "wireless internet"],
+    "responses": ["Click the network icon near the clock, choose your Wi-Fi network, then select Connect.", "Open the quick settings panel from the taskbar network icon, select a network, and enter its password."]
+  },
+  {
+    "prompts": ["change volume", "turn volume up", "sound volume"],
+    "responses": ["Click the speaker icon near the clock and drag the volume slider. Keyboard volume keys work too, when they feel like it.", "Use the speaker icon in the taskbar, or open Settings > System > Sound for more controls."]
+  },
+  {
+    "prompts": ["microphone not working", "mic not working", "no microphone"],
+    "responses": ["Open Settings > System > Sound, choose your microphone under Input, and check its volume and permissions. Also check the app selected the right mic.", "Check Settings > System > Sound > Input, then make sure the microphone is not muted and the app has microphone permission."]
+  },
+  {
+    "prompts": ["free up space", "storage full", "not enough disk space"],
+    "responses": ["Open Settings > System > Storage > Temporary files, review the list, then remove what you do not need.", "Check Settings > System > Storage to see what is taking space. Downloads and forgotten games are frequent suspects."]
+  },
+  {
+    "prompts": ["second monitor", "use two monitors", "extend display"],
+    "responses": ["Connect the monitor, then press Windows + P and choose Extend. Open Settings > System > Display if you need to arrange the screens.", "Press Windows + P and choose Extend. Then arrange the display rectangles in Settings > System > Display."]
+  },
+  {
+    "prompts": ["split screen", "snap windows", "side by side windows"],
+    "responses": ["Drag a window to a screen edge, or press Windows + Left/Right Arrow. Windows will offer the remaining space to another app.", "Use Windows + Left Arrow or Windows + Right Arrow to snap the active window to one side."]
+  },
+  {
+    "prompts": ["open task manager", "task manager", "app frozen", "program not responding"],
+    "responses": ["Press Ctrl + Shift + Esc to open Task Manager. Select the frozen app and choose End task if waiting does not help.", "Open Task Manager with Ctrl + Shift + Esc. Ending a task can lose unsaved work, so give the app a moment first."]
+  }
+]

@@ -1,1 +1,13 @@
 default|Bing it.
+how do i build a rocket|Bing it. Preferably before lighting anything.
+teach me quantum physics|Bing it. Then come back when the uncertainty has settled down.
+what is the best programming language|No need to Bing it. It's rust and web frontend.
+predict the future|Bing it. If it works, please tell me whether I finally get a raise.
+solve my entire life|Bing it. I can barely keep your taskbar company.
+give me legal advice|Bing it. Then talk to an actual qualified human, please.
+give me medical advice|Bing it. Better yet, speak with a qualified healthcare professional.
+how do i get rich|Bing it. If the results promise a secret trick, close that tab with purpose.
+what stocks should i buy|Bing it. Financial advice from a paperclip would be a bold life choice.
+write my essay|Bing it. I will accept a thoughtful outline as a compromise.
+do my homework|Bing it. Learning is unfortunately not yet available as a background download.
+fix my relationship|Bing it. Then try honest communication; it has better uptime.

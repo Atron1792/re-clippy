@@ -1,3 +1,0 @@
-create a new file|Open File Explorer, go to the folder you want, right-click an empty area, choose New, then choose the file type. In many apps, Ctrl+N creates a new document.
-where are my screenshots|Press Windows + Shift + S to capture part of the screen. Screenshots taken with Windows + Print Screen are saved in Pictures > Screenshots.
-find screenshots|Open File Explorer and select Pictures > Screenshots. If you used the Snipping Tool, check its notification or save location.

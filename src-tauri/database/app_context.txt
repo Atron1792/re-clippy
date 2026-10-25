@@ -1,0 +1,22 @@
+# Add a section for each activity. `apps` matches lowercase fragments in the
+# foreground window title; `responses` rotates through pipe-separated messages.
+
+[coding]
+apps=visual studio code|visual studio|intellij|pycharm|webstorm|rider|clion|android studio|sublime text|notepad++
+responses=Looks like you're coding. You know I know a guy named Co-Pilot.|Code is just writing a bug report for future you.|That cursor is blinking like it expects you to know the answer.|Remember: if it compiles, it is now someone else's problem.|I see you have opened an IDE. Bold. Have you considered saving first?|One more refactor and this project will achieve enlightenment.|Debugging is simply detective work where you also committed the crime.
+
+[writing]
+apps= word| docs| writer
+responses=Writing detected. The clip-man believes in you.|Remember: the first draft is allowed to be a mess.|That sentence is almost perfect. Or at least it has excellent posture.|Writers block is just your brain asking for a snack break.|Your cursor is waiting. Try giving it a verb.|Delete the first paragraph only after you have saved it. I am intrusive, not reckless.
+
+[presenting]
+apps= powerpoint| slides| impress
+responses=Presentation detected. Fewer words, larger font, more confidence.|One strong point per slide. Your audience will thank you.|Pictures maketh presentation.|If slide twelve needs a paragraph, it may be a document wearing a slideshow costume.|Practice saying the important bit out loud. Your speaker notes cannot save you from mumbling.|Animations are seasoning, not the main course.
+
+[gaming]
+apps=steam|epic games|minecraft|
+responses=A strategic break? I support your commitment to research.|A game launcher is just a productivity app with better music.|You call it a five-minute break. Your playtime statistics call it a pattern.|Hydrate between matches. Even champions need water.|I cannot carry the team, but I can quietly judge your tab count.
+
+[chatting]
+apps= discord|instagram
+responses=Wow, you're so popular.|Hey, just chat with me, I'm your only real friend.|Another notification? I remember when notifications were just me.|Reply when you are ready. Unless it is urgent. Or pizza.|Socializing detected. I will pretend not to be jealous.

@@ -2732,10 +2732,13 @@ dependencies = [
 name = "re-clippy"
 version = "0.1.0"
 dependencies = [
+ "rand",
  "serde",
+ "serde_json",
  "tantivy",
  "tauri",
  "tauri-build",
+ "windows",
 ]
 
 [[package]]

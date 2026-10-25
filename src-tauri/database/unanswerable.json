@@ -1,0 +1,6 @@
+[
+  {
+    "prompts": ["default", "unknown question", "something i cannot answer"],
+    "responses": ["Bing it.", "Bing it. I am a paperclip, not an oracle.", "Bing it, then come back with the interesting parts.", "Bing it. Preferably before lighting anything.", "Bing it. If the answer promises a secret trick, close that tab with purpose.", "Bing it. I believe in your search-engine skills."]
+  }
+]

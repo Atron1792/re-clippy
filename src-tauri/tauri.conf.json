@@ -28,7 +28,7 @@
                 "title": "Chay",
                 "url": "/chat",
                 "width": 360,
-                "height": 300,
+                "height": 160,
                 "resizable": false,
                 "decorations": false,
                 "transparent": true,
