@@ -18,6 +18,9 @@ use tantivy::{
 };
 use tauri::{AppHandle, Emitter, LogicalSize, Manager, PhysicalPosition};
 
+const TASKBAR_MARGIN: i32 = 48;
+const CHAT_GAP: i32 = 8;
+
 #[derive(serde::Serialize)]
 struct SearchResponse {
     category: String,
@@ -56,7 +59,7 @@ fn random_response(responses: &[String]) -> String {
         .unwrap_or_else(|| "Bing it.".to_string())
 }
 
-#[derive(serde::Deserialize, serde::Serialize, Clone)]
+#[derive(serde::Serialize, Clone)]
 struct ContextNudge {
     context: String,
     response: String,
@@ -79,7 +82,7 @@ struct InterruptionState {
     muted_until: Mutex<Option<Instant>>,
 }
 
-#[derive(serde::Deserialize, serde::Serialize, Clone)]
+#[derive(serde::Deserialize, serde::Serialize)]
 struct HistoryEntry {
     question: String,
     answer: String,
@@ -172,14 +175,15 @@ fn build_app_contexts() -> Result<AppContexts, String> {
                           name: &mut Option<String>,
                           applications: &mut Vec<String>,
                           responses: &mut Vec<String>| {
-        if let Some(name) = name.take() {
-            if !applications.is_empty() && !responses.is_empty() {
-                contexts.push(AppContext {
-                    name,
-                    applications: std::mem::take(applications),
-                    responses: std::mem::take(responses),
-                });
-            }
+        if let Some(name) = name.take()
+            && !applications.is_empty()
+            && !responses.is_empty()
+        {
+            contexts.push(AppContext {
+                name,
+                applications: std::mem::take(applications),
+                responses: std::mem::take(responses),
+            });
         }
     };
 
@@ -230,7 +234,7 @@ fn build_app_contexts() -> Result<AppContexts, String> {
 
 fn build_search_index() -> Result<SearchIndex, String> {
     let mut schema_builder = Schema::builder();
-    let query = schema_builder.add_text_field("query", TEXT | STORED);
+    let query = schema_builder.add_text_field("query", TEXT);
     let exact_prompt = schema_builder.add_text_field("exact_prompt", STRING);
     let responses = schema_builder.add_text_field("responses", STORED);
     let category = schema_builder.add_text_field("category", STORED);
@@ -257,9 +261,8 @@ fn build_search_index() -> Result<SearchIndex, String> {
             continue;
         }
         let contents = fs::read_to_string(&path).map_err(|error| error.to_string())?;
-        let entries: Vec<SearchEntry> = serde_json::from_str(&contents).map_err(|error| {
-            format!("Could not read {}: {error}", path.display())
-        })?;
+        let entries: Vec<SearchEntry> = serde_json::from_str(&contents)
+            .map_err(|error| format!("Could not read {}: {error}", path.display()))?;
 
         for (entry_number, entry) in entries.into_iter().enumerate() {
             if entry.prompts.is_empty() || entry.responses.is_empty() {
@@ -386,7 +389,9 @@ fn search_docs(
             category: text(search_index.category),
             answer: serde_json::from_str::<Vec<String>>(&text(search_index.responses))
                 .map(|responses| random_response(&responses))
-                .unwrap_or_else(|_| "Bing it. My database filing system is having a moment.".to_string()),
+                .unwrap_or_else(|_| {
+                    "Bing it. My database filing system is having a moment.".to_string()
+                }),
         },
     )
 }
@@ -400,23 +405,34 @@ fn position_clippy(window: &tauri::WebviewWindow) -> Result<(), String> {
     let origin = monitor.position();
     let screen = monitor.size();
     let size = window.outer_size().map_err(|error| error.to_string())?;
-    let taskbar_margin = 48_i32;
-
     window
         .set_position(PhysicalPosition::new(
             origin.x + screen.width as i32 - size.width as i32,
-            origin.y + screen.height as i32 - size.height as i32 - taskbar_margin,
+            origin.y + screen.height as i32 - size.height as i32 - TASKBAR_MARGIN,
         ))
         .map_err(|error| error.to_string())
 }
 
 fn position_chat(clippy: &tauri::WebviewWindow, chat: &tauri::WebviewWindow) -> Result<(), String> {
+    let monitor = clippy
+        .primary_monitor()
+        .map_err(|error| error.to_string())?
+        .ok_or("No primary monitor found")?;
+    let monitor_position = monitor.position();
+    let monitor_size = monitor.size();
     let clippy_position = clippy.outer_position().map_err(|error| error.to_string())?;
     let clippy_size = clippy.outer_size().map_err(|error| error.to_string())?;
     let chat_size = chat.outer_size().map_err(|error| error.to_string())?;
 
-    let x = clippy_position.x + clippy_size.width as i32 - chat_size.width as i32;
-    let y = clippy_position.y - chat_size.height as i32 - 8;
+    let preferred_x = clippy_position.x + clippy_size.width as i32 - chat_size.width as i32;
+    let preferred_y = clippy_position.y - chat_size.height as i32 - CHAT_GAP;
+    let min_x = monitor_position.x;
+    let max_x = monitor_position.x + monitor_size.width as i32 - chat_size.width as i32;
+    let min_y = monitor_position.y + CHAT_GAP;
+    let max_y =
+        monitor_position.y + monitor_size.height as i32 - chat_size.height as i32 - TASKBAR_MARGIN;
+    let x = preferred_x.clamp(min_x, max_x);
+    let y = preferred_y.clamp(min_y, max_y);
 
     println!(
         "[Re-Clippy] positioning chat at ({x}, {y}); Clippy at ({}, {}), size {}x{}; chat size {}x{}",
@@ -504,6 +520,12 @@ fn show_context_nudge(
         .get_webview_window("chat")
         .ok_or("Chat window not found")?;
 
+    if clippy.is_minimized().map_err(|error| error.to_string())? {
+        println!("[Re-Clippy] context nudge skipped while Clippy is minimized");
+        return Ok(());
+    }
+    position_clippy(&clippy)?;
+
     if !chat.is_visible().map_err(|error| error.to_string())? {
         position_chat(&clippy, &chat)?;
         chat.show().map_err(|error| error.to_string())?;
@@ -543,6 +565,7 @@ fn open_chat(app: AppHandle) -> Result<String, String> {
         return Ok("chat already open".to_string());
     }
 
+    position_clippy(&clippy)?;
     println!("[Re-Clippy] positioning pre-created chat window");
     position_chat(&clippy, &chat)?;
     println!("[Re-Clippy] chat position set");
@@ -593,6 +616,13 @@ pub fn run() {
         .manage(build_app_contexts().expect("could not load Re-Clippy app contexts"))
         .manage(InterruptionState {
             muted_until: Mutex::new(None),
+        })
+        .on_window_event(|window, event| {
+            if window.label() == "main"
+                && matches!(event, tauri::WindowEvent::CloseRequested { .. })
+            {
+                window.app_handle().exit(0);
+            }
         })
         .invoke_handler(tauri::generate_handler![
             open_chat,
