@@ -1,6 +1,3 @@
-# Add a section for each activity. `apps` matches lowercase fragments in the
-# foreground window title; `responses` rotates through pipe-separated messages.
-
 [coding]
 apps=visual studio code|visual studio|intellij|pycharm|webstorm|rider|clion|android studio|sublime text|notepad++
 responses=Looks like you're coding. You know I know a guy named Co-Pilot.|Code is just writing a bug report for future you.|That cursor is blinking like it expects you to know the answer.|Remember: if it compiles, it is now someone else's problem.|I see you have opened an IDE. Bold. Have you considered saving first?|One more refactor and this project will achieve enlightenment.|Debugging is simply detective work where you also committed the crime.

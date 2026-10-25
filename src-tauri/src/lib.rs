@@ -27,9 +27,6 @@ struct SearchResponse {
     answer: String,
 }
 
-// Each database record can recognise several phrasings and choose from several
-// replies. That lets the search stay data-driven instead of hard-coding chat
-// behaviour in Rust.
 #[derive(serde::Deserialize)]
 struct SearchEntry {
     prompts: Vec<String>,
@@ -348,8 +345,6 @@ fn search_docs(
         Box::new(TermQuery::new(exact_term, IndexRecordOption::Basic)),
         10.0,
     );
-    // Keep Tantivy's loose keyword search, while a whole-prompt match receives
-    // a strong score boost and wins against partial overlaps.
     let ranked_query = BooleanQuery::new(vec![
         (Occur::Should, loose_query),
         (Occur::Should, Box::new(exact_query)),
@@ -455,7 +450,6 @@ fn position_chat(clippy: &tauri::WebviewWindow, chat: &tauri::WebviewWindow) -> 
 fn active_window_title() -> String {
     use windows::Win32::UI::WindowsAndMessaging::{GetForegroundWindow, GetWindowTextW};
 
-    // Windows owns this buffer; we only read the title of its foreground window.
     let mut title_buffer = [0u16; 512];
     let title_length = unsafe { GetWindowTextW(GetForegroundWindow(), &mut title_buffer) };
     String::from_utf16_lossy(&title_buffer[..title_length.max(0) as usize]).to_lowercase()
@@ -601,8 +595,6 @@ fn resize_chat(height: f64, app: AppHandle) -> Result<(), String> {
         .get_webview_window("chat")
         .ok_or("Chat window not found")?;
 
-    // The frontend measures CSS pixels. Tauri's LogicalSize keeps this correct
-    // when Windows display scaling is enabled.
     let height = height.clamp(120.0, 600.0);
     chat.set_size(LogicalSize::new(360.0, height))
         .map_err(|error| error.to_string())?;
