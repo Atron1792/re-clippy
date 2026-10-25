@@ -13,6 +13,7 @@
         "windows": [
             {
                 "label": "main",
+                "title": "Clippy",
                 "width": 180,
                 "height": 200,
                 "resizable": false,
@@ -21,6 +22,20 @@
                 "alwaysOnTop": true,
                 "skipTaskbar": false,
                 "shadow": false
+            },
+            {
+                "label": "chat",
+                "title": "Chay",
+                "url": "/chat",
+                "width": 360,
+                "height": 300,
+                "resizable": false,
+                "decorations": false,
+                "transparent": true,
+                "alwaysOnTop": true,
+                "skipTaskbar": true,
+                "shadow": false,
+                "visible": false
             }
         ],
         "security": {
